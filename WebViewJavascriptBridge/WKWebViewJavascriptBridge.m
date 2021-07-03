@@ -8,8 +8,6 @@
 
 #import "WKWebViewJavascriptBridge.h"
 
-#if defined supportsWKWebView
-
 @implementation WKWebViewJavascriptBridge {
     __weak WKWebView* _webView;
     __weak id<WKNavigationDelegate> _webViewDelegate;
@@ -96,7 +94,7 @@
         if (error != nil) {
             NSLog(@"WebViewJavascriptBridge: WARNING: Error when trying to fetch data from WKWebView: %@", error);
         }
-        [_base flushMessageQueue:result];
+        [self->_base flushMessageQueue:result];
     }];
 }
 
@@ -193,6 +191,3 @@
 
 
 @end
-
-
-#endif
